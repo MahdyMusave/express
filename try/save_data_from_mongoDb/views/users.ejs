@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Users</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="error_user">
+      <% if(masg_errors.length >= 0){ masg_errors.forEach((error)=>{%>
+
+      <div class="error"><%= error.msg %></div>
+      <%})} %>
+    </div>
+
+    <% //console.log(msg_update.length ) %>
+    <div class="msg_info_by_Api">
+      <% if(msg_update .length){%>
+      <p class="msg msg_update"><%=msg_update %></p>
+      <%} %> <% if(msg_delete .length){%>
+      <p class="msg msg_delete"><%=msg_delete %></p>
+      <%}%>
+    </div>
+
+    <h2>users</h2>
+    <div class="create_user">
+      <form action="/users" method="post">
+        <input type="number" id="userid" placeholder="id" name="userid" />
+        <input
+          type="text"
+          id="first_name"
+          placeholder="first_name"
+          name="first_name"
+        />
+        <input type="email" id="email" placeholder="email" name="email" />
+        <input
+          type="password"
+          id="password"
+          placeholder="password"
+          name="password"
+        />
+        <input
+          type="submit"
+          value="add_New_user"
+          style="margin-left: 15px; padding: 10px 15px"
+        />
+      </form>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <td>id</td>
+          <td>first_name</td>
+          <td>email</td>
+          <td>password</td>
+          <td>action</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% //console.log(users) %> <% users.forEach((user) => { %>
+
+        <tr>
+          <th><%= user.userid%></th>
+          <th><%= user.first_name%></th>
+          <th><%= user.email%></th>
+          <th><%= user.password%></th>
+          <td class="action">
+            <form action="/users/<%=user.userid %>?method=delete" method="post">
+              <button>delete</button>
+            </form>
+            <button><a href="/users/<%=user.userid %>">update</a></button>
+          </td>
+        </tr>
+
+        <% }) %>
+      </tbody>
+    </table>
+  </body>
+</html>

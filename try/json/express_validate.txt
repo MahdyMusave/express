@@ -1,0 +1,37 @@
+const { body, validationResult } = require("express-validator");
+
+
+
+
+
+app.post(
+  "/",
+  [
+    body("name").notEmpty().withMessage("invalid name"),
+    body("id").isNumeric().withMessage("id must number"),
+    body("color").isString().withMessage("color must be color name"),
+    body("year").isNumeric().withMessage("year must be number"),
+    body("pantone_value")
+      .isNumeric()
+      .withMessage("pantone_value must be number"),
+  ],
+
+  (req, res) => {
+    // console.log(req.body);
+    const errors = validationResult(req);
+    // console.log(errors);
+    if (!errors.isEmpty()) {
+      // return console.log(errors);
+      console.log(errors.array());
+      return res.status(400).json({
+        error: errors,
+      });
+    }
+
+    req.body.id = parseInt(req.body.id);
+
+    users.push(req.body);
+
+    res.json({ success: "you create new user" });
+  }
+);

@@ -1,0 +1,21 @@
+let users = require("./users");
+
+app.put("/:id", (req, res) => {
+  const userId = req.params.id;
+  // console.log(userId);
+  users = users.map((user) => {
+    // return console.log(user.id);
+    if (user.id == userId) {
+      req.body.id = parseInt(req.body.id);
+      return req.body;
+    } else {
+      return user;
+    }
+  });
+
+  res.json({
+    users: users,
+    data: "update you file",
+    success: true,
+  });
+});

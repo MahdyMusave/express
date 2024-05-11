@@ -1,0 +1,11 @@
+let ejs = require("ejs");
+app.set("view engine", "ejs");
+
+create a folder views ;
+inside the view create an html =>Ejs file index.ejs;
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+

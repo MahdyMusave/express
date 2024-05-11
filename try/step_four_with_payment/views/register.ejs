@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>index</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="./css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header>
+      <%msg_error.forEach((err)=>{%>
+      <h2><%=err.msg %></h2>
+      <%})%>
+    </header>
+    <form action="/auth/register" method="post">
+      <label>firstName</label>
+      <input
+        type="first_name"
+        name="first_name"
+        placeholder="first_name"
+        id="first_name"
+      />
+      <label>email</label>
+      <input type="email" name="email" placeholder="email" id="email" />
+      <label>password</label>
+      <input
+        type="password"
+        name="password"
+        placeholder="password"
+        id="password"
+      />
+      <input type="submit" value="register" />
+    </form>
+  </body>
+</html>

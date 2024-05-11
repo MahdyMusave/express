@@ -1,0 +1,14 @@
+app.post("/", (req, res) => {
+  const user = {
+    id: 7,
+    name: "mahdy mosave",
+    year: 2023,
+    color: "blue",
+    pantone_value: "25827",
+  };
+  users.push(user);
+  res.json({
+    data: users,
+    success: "create your user" + true,
+  });
+});

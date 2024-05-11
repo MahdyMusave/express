@@ -1,0 +1,11 @@
+<tbody>
+        <% //console.log(users) %> <% users.forEach((user) => { %>
+
+        <tr>
+          <th><%= user.id%></th>
+          <th><%= user.first_name%></th>
+          <th><%= user.email%></th>
+          <th><%= user.password%></th>
+        </tr>
+        <% }) %>
+      </tbody>

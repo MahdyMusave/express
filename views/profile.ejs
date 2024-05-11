@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>index</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="./css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <h2>here is the profile</h2>
+    <form
+      method="post"
+      action="/profile/pay"
+      style="
+        border: 1px solid navy;
+        padding: 18px;
+        width: 50%;
+        margin: auto;
+        background-color: aliceblue;
+        border-radius: 8px;
+      "
+    >
+      <h2>please charge your payment Accound my frind</h2>
+      <input
+        type="number"
+        id="amount"
+        name="amount"
+        placeholder="Desired amount "
+      />
+      <input
+        type="hidden"
+        id="userid"
+        name="userid"
+        value="64cfb2ff8061a30f63e9aefd"
+      />
+      <input
+        type="submit"
+        value="charge"
+        style="padding: 3px 10px; margin-left: 10px; font-size: 15px"
+      />
+    </form>
+    <a href="/logout">login out</a>
+  </body>
+</html>

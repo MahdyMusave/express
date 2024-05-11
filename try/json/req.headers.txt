@@ -1,0 +1,8 @@
+app.get("/", (req, res) => {
+
+  // console.log(req.headers.host + "header");
+  // console.log(req.headers.location + "header");
+  // console.log(req.headers.cookie + "header");
+  // console.log(req.headers.authorization + "header");
+  console.log(req.headers.origin + "header");
+});

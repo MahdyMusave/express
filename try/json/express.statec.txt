@@ -1,0 +1,14 @@
+// app.use(express.static(__dirname, ["/public"]));
+app.use(express.static(__dirname+"/public"));
+// console.log(app.use(express.static(__dirname, ["/public"])));
+
+
+create a folder views ;
+inside the view create an html =>Ejs file index.ejs;
+
+<head>
+    <title>index</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="./css/style.css" rel="stylesheet" />
+  </head>

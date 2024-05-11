@@ -1,0 +1,105 @@
+//install and import on app.js
+
+const session = require("express-session");
+const flash = require("connect-flash");
+
+app.use(
+  session({
+    secret: "jjksdhskhdhusskhksy",
+    resave: false,
+    saveUninitialized: true,
+  })
+);
+
+// after that you should go to router_users.js and use flash();
+
+/*//this is exmple
+//router.get("/login", (req, res) => {
+// const errorMsg = req.flash("error");
+// res.render("users",{errors:errorMsg})
+//}*/
+
+
+router.get("/", (req, res) => {
+  // console.log(req.flash("errors_msg"));
+  res.render("users", {
+    users: users,
+    masg_errors: req.flash("errors_msg"),
+    msg_update: req.flash("msg_update"),
+    msg_delete: req.flash("msg_delete"),
+  });
+});
+
+
+router.post(
+  "/",
+  [
+    body("id").isNumeric().withMessage("id must number"),
+    body("first_name").notEmpty().withMessage("invalid name"),
+    body("email").isEmail().withMessage("invalid email"),
+    body("password").isLength(8).withMessage("password must be 8 charcter"),
+  ],
+
+
+  (req, res) => {
+    // console.log(req.body);
+    const result_errors = validationResult(req);
+    // console.log(errors);
+    if (!result_errors.isEmpty()) {
+      // return console.log(errors);
+      req.flash("errors_msg", result_errors.array());
+      return res.redirect("/users");
+    }
+    req.body.id = parseInt(req.body.id);
+
+    users.push(req.body);
+
+    // res.json({ success: "you create new user" });
+    return res.redirect("/users");
+  }
+);
+
+
+router.put("/:id", (req, res) => {
+  users = users.map((user) => {
+    if (user.id === parseInt(req.params.id)) {
+      // return req.body;
+      req.body.id = parseInt(req.body.id);
+      // console.log(req.body);
+      return req.body;
+    } else {
+      return user;
+    }
+  });
+  req.flash("msg_update", "your user update with successfuly");
+  return res.redirect("/users");
+});
+
+
+router.delete("/:id", (req, res) => {
+  // users.filter((user) => {
+  //   // console.log(typeof user.id);
+  //   console.log(typeof req.params.id);
+  //   console.log(user.id != req.params.id);
+  // });
+  users = users.filter((user) => user.id !== parseInt(req.params.id));
+  req.flash("msg_delete", "your user delete with successfuly");
+  return res.redirect("/users");
+});
+
+//after that use in views/users.ejs
+    <div class="error_user">
+      <% if(masg_errors.length >= 0){ masg_errors.forEach((error)=>{%>
+
+      <div class="error"><%= error.msg %></div>
+      <%})} %>
+    </div>
+
+    <% //console.log(msg_update.length ) %>
+    <div class="msg_info_by_Api">
+      <% if(msg_update .length){%>
+      <p class="msg msg_update"><%=msg_update %></p>
+      <%} %> <% if(msg_delete .length){%>
+      <p class="msg msg_delete"><%=msg_delete %></p>
+      <%}%>
+    </div>

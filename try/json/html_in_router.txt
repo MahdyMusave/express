@@ -1,0 +1,19 @@
+app.get("/", (req, res) => {
+  // console.log("this word is beatiful");
+  const Html = `
+    <!DOCTYPE html>
+  <html>
+  <head>
+     <title>My HTML File</title>
+     <link style='stylesheet' src='./css/style.css'>
+  </head>
+  <body>
+     <h1>Hello, world!</h1>
+     <p>This is my HTML file created with Express.</p>
+  </body>
+  </html>
+`;
+
+  // res.send("this word is not good");
+  res.send(Html);
+});

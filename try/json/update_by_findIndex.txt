@@ -1,0 +1,12 @@
+app.put("/:id", (req, res) => {
+  const userId = req.params.id;
+  const updateUser = req.body;
+  const findIndex = users.findIndex((user) => user.id == userId);
+
+  if (findIndex !== -1) {
+    users[findIndex] = { ...users[findIndex], ...updateUser };
+    res.send("user update");
+  } else {
+    res.send(`No User with the id ${userId}`);
+  }
+});

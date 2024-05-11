@@ -1,0 +1,56 @@
+//import in app.js
+const methodOverride = require("method-override");
+
+//create a form in views/user.ejs
+<div class="update-user">
+      <form action="/users/<%=user.id %>?method=put" method="post">
+        <input type="number" id="id" name="id" value="<%=user.id %>" />
+        <input
+          type="text"
+          id="first_name"
+          name="first_name"
+          value="<%=user.first_name %>"
+        />
+        <input type="email" id="email" name="email" value="<%=user.email %>" />
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value="<%=user.password %>"
+        />
+        <input
+          type="submit"
+          value="add_New_user"
+          style="margin-left: 15px; padding: 10px 15px"
+        />
+      </form>
+    </div>
+
+    // now go to router users_router.js
+    //first get server side rendering
+    
+    router.get("/:id", (req, res) => {
+      const user = users.find((user) => {
+      // console.log(user.id)
+      // console.log(user.id == req.params.id);
+      if (user.id == req.params.id) {
+        return user;
+      }
+    });
+  res.render("user", { user, user });
+});
+
+// after update your user data by form
+router.put("/:id", (req, res) => {
+  users = users.map((user) => {
+    if (user.id === parseInt(req.params.id)) {
+      // return req.body;
+      req.body.id = parseInt(req.body.id);
+      // console.log(req.body);
+      return req.body;
+    } else {
+      return user;
+    }
+  });
+  return res.redirect("/users");
+});

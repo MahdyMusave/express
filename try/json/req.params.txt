@@ -1,0 +1,4 @@
+app.get("/:age", (req, res) => {
+  console.log(req.params);
+  res.send("today is good today" + ` ${req.params.age}`);
+});

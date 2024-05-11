@@ -1,0 +1,28 @@
+ <form action="/users" method="post">
+        <input type="id" id="id" placeholder="id" name="id" />
+        <input
+          type="text"
+          id="first_name"
+          placeholder="first_name"
+          name="first_name"
+        />
+        <input type="email" id="email" placeholder="email" name="email" />
+        <input
+          type="password"
+          id="password"
+          placeholder="password"
+          name="password"
+        />
+        <input
+          type="submit"
+          value="add_New_user"
+          style="margin-left: 15px; padding: 10px 15px"
+        />
+      </form>
+
+
+      let users = require("./users");
+
+      router.get("/", (req, res) => {
+        res.render("users", { users: users });
+      });

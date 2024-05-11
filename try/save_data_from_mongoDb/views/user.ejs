@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Users</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <h2>user</h2>
+    <div class="update-user">
+      <form action="/users/<%=user.userid %>?method=put" method="post">
+        <input
+          type="number"
+          id="userid"
+          name="userid"
+          value="<%=user.userid %>"
+        />
+        <input
+          type="text"
+          id="first_name"
+          name="first_name"
+          value="<%=user.first_name %>"
+        />
+        <input type="email" id="email" name="email" value="<%=user.email %>" />
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value="<%=user.password %>"
+        />
+        <input
+          type="submit"
+          value="add_New_user"
+          style="margin-left: 15px; padding: 10px 15px"
+        />
+      </form>
+    </div>
+  </body>
+</html>

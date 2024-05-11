@@ -1,0 +1,10 @@
+router.get("/", (req, res) => {
+  res.render("users", { msg: "hello user" });
+});
+
+//in users.ejs you can use now 
+<h2>users</h2>
+
+<%= msg %>
+
+<h3>today weather is good my frind</h3>

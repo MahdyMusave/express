@@ -1,0 +1,20 @@
+app.get("/", (req, res) => {
+  res.json({
+    data: users,
+    success: "your data is view" + true,
+  });
+});
+
+app.get("/:id", (req, res) => {
+  const user = users.find((user) => {
+    // console.log(user.id)
+    // console.log(user.id == req.params.id);
+    if ((user.id == req.params.id)) {
+      return user;
+    }
+  });
+  res.json({
+    data: user,
+    success: "your data is view" + true,
+  });
+});
